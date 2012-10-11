@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Django App</title>
+	</head>
+	<body>
+		<h1>Cat listing {{ dir_name }}</h1>
+		<ul>
+			{% for item in dir_content %}
+			<li>{{ item }}</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
