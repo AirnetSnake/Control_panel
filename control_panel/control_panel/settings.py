@@ -1,4 +1,4 @@
-# Django settings for control_panel project.
+﻿# Django settings for control_panel project.
 
 DEBUG = True
 import os
@@ -10,9 +10,12 @@ ADMINS = (
 	('Ivan', 'airnetsnake@gmail.com')
 )
 
-PROJECT_ROOT = '/home/snake/projects/control_panel'
-MEDIA_ROOT = '/home/snake/projects/control_panel/media'
-STATIC_ROOT = '/home/snake/projects/control_panel/static'
+#PROJECT_ROOT = '/home/student/projects/Control_panel/control_panel'
+#MEDIA_ROOT = '/home/student/projects/Control_panel/control_panel/media'
+#STATIC_ROOT = '/home/student/projects/Control_panel/control_panel/static'
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+#MEDIA_ROOT = PROJECT_ROOT + '/media'
+#STATIC_ROOT = PROJECT_ROOT + '/static'
 
 MANAGERS = ADMINS
 
@@ -94,12 +97,19 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+                    'django.contrib.messages.context_processors.messages',
+		    'django.contrib.auth.context_processors.auth',
+                   #
+)
+
 MIDDLEWARE_CLASSES = (
-    #'django.middleware.common.CommonMiddleware',
-    #'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
-    #'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'django.contrib.messages.middleware.MessageMiddleware',
+	#'MessageMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -117,16 +127,16 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    #'django.contrib.auth',
-    #'django.contrib.contenttypes',
-    #'django.contrib.sessions',
-    #'django.contrib.sites',
-    #'django.contrib.messages',
-    #'django.contrib.staticfiles',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
     'pages',
     'library',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
