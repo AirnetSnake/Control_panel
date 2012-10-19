@@ -1,4 +1,4 @@
-# -*- encoding: utf-8 -*-
+﻿# -*- encoding: utf-8 -*-
 from django.db import models
 from datetime import datetime
 
@@ -12,7 +12,7 @@ class Publisher(models.Model):
     website = models.URLField('Адрес сайта', null=True, blank=True)
 
     def __unicode__(self):
-	return u'%s (%s)' % (self.title, self.website)
+		return u'%s (%s)' % (self.title, self.website)
 
 
 class Author(models.Model):
@@ -21,8 +21,10 @@ class Author(models.Model):
     email = models.EmailField('Электронная почта', null=True, blank=True)
 
     def __unicode__(self):
-	return u'%s %s' % (self.last_name, self.first_name)
+		return u'%s %s' % (self.last_name, self.first_name)
 
+	def get_absolute_url(self):
+		return '/library/authors/%d/' % (self.id)
 
 class Book(models.Model):
     title = models.CharField('Название', max_length=128)
@@ -33,4 +35,9 @@ class Book(models.Model):
     def __unicode__(self):
 	return u'%s' % (self.title)
 
+	def get_absolute_url(self):
+		return '/library/books/%d/' % (self.id)
+
+	def get_authors(self):
+		return ', '.join([author.first_name +' '+ author.last_name for author in self.authors.all()])
 

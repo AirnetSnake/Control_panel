@@ -10,7 +10,10 @@ urlpatterns = patterns('',
     # url(r'^control_panel/', include('control_panel.foo.urls')),
 url(r'^$', 'pages.views.home'),
 url(r'^log/(?P<sub>.*?)$', 'pages.views.listing'),
-url(r'^library/(?P<sub>.*?)$', 'library.views.get_book_list'),
+url(r'^library/(?P<sub>(books){0,1}?)$', 'library.views.get_book_list'),
+url(r'^library/books/(?P<sub>\d+?)/$', 'library.views.get_book_info'),
+url(r'^library/authors/?$', 'library.views.get_authors'),
+url(r'^library/authors/(?P<sub>\d+?)/$', 'library.views.get_author_info'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
